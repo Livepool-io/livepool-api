@@ -10,7 +10,7 @@ export default class LivepoolNodeService {
         return new Promise((resolve, reject) => {
             axios.get(`${this._server}/transcoders`)
             .catch(err => reject(err))
-            .then(res => resolve(res.data))
+            .then(res => resolve(res.data.transcoders = res.data.transcoders.map(t => ({Region: process.env.REGION, ...t}))))
         })
     }
 
